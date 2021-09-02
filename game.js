@@ -6,6 +6,7 @@ kaboom({
     scale: 2,
     debug: true,
     clearColor: [0, 0, 0, 1],
+    // clearColor:[rgba(0, 0, 1, 0.5)],
 })
 
 //speeds
@@ -15,7 +16,7 @@ const BIG_JUMP_FORCE = 550;
 let CURRENT_JUMP_FORCE = JUMP_FORCE;
 let isJumping = true;
 const FALL_DEATH = 400;
-const ENEMY_SPEED=20;
+const ENEMY_SPEED = 20;
 
 
 loadRoot('/assets/')
@@ -33,58 +34,135 @@ loadSprite('purple-block', 'purple_block.png')
 loadSprite('rose', 'rose.png')
 loadSprite('surprise', 'surprise.png')
 loadSprite('teddy', 'teddy.png')
+loadSprite('background', 'background.png')
+loadSprite('peach-block', 'peach_block.png')
+loadSprite('gold-block', 'gold-block.png')
+loadSprite('bunny', 'bunny.png')
+loadSprite('empty-square', 'empty-quare.png')
+loadSprite('multi', 'multi.png')
+loadSprite('burger', 'burger.png')
+loadSprite('redbull', 'rebull.png')
 loadSound('slow', 'slow.mp3')
 loadSound('horse-sound', 'horse-sound.mp3')
 loadSound('rooster', 'rooster.mp3')
 loadSound('magic', 'magic.mp3')
 loadSound('deathnote', 'deathnote.mp3')
 
+
 scene("game", ({ level, score }) => {
     layers(['bg', 'obj', 'ui'], 'obj')
 
     const maps = [
+        // [   '                                         ',
+        //     '                                         ',
+        //     '                                         ',
+        //     '                                         ',
+        //     '                                         ',
+        //     '                                         ',
+        //     '                                         ',
+        //     '                                         ',
+        //     '               ====                      ',
+        //     '                                         ',
+        //     '          ===                            ',
+        //     '                                         ',
+        //     '     =*===?                              ',
+        //     '                 ?==            `        ',
+        //     '                                         ',
+        //     '                                         ',
+        //     '       @        %                         ',
+        //     '===========================  ==========  ',
+        // ],
+        // ['                                         ',
+        //     '                                         ',
+        //     '                                         ',
+        //     '                                         ',
+        //     '   ??                                    ',
+        //     '                *     @                  ',
+        //     '                                         ',
+        //     '   (((((((((((((((                       ',
+        //     '                       (                 ',
+        //     '=           @                            ',
+        //     '=                                        ',
+        //     '=           (((     `                    ',
+        //     '=                                        ',
+        //     '=                           (((((        ',
+        //     '=     @                                  ',
+        //     '=                                        ',
+        //     '========              =========          ',
+        // ],
+        // [
+        //     '                                         ',
+        //     '                                         ',
+        //     '                                         ',
+        //     '                                         ',
+        //     '                                         ',
+        //     '                                         ',
+        //     '      ??                                 ',
+        //     '                *     @                  ',
+        //     '                           `             ',
+        //     '  ?**             ^                      ',
+        //     '                                         ',
+        //     '=  ^         @                           ',
+        //     '=                         ^              ',
+        //     '=           (((      )))))))))           ',
+        //     '=                                        ',
+        //     '=                                  ((((( ',
+        //     '=     @                                  ',
+        //     '=                                        ',
+        //     '))))))))))))                 ))))))))))))',
+        // ],
+        // [
+        //     '                                         ',
+        //     '                                         ',
+        //     '                                         ',
+        //     '                                         ',
+        //     '                       )))))))))))       ',
+        //     '                                         ',
+        //     '      ??                                 ',
+        //     '                *     }                  ',
+        //     '                           `             ',
+        //     '  ?**             ^                      ',
+        //     '                                         ',
+        //     '   ^ =======         }                   ',
+        //     '=                         ^              ',
+        //     '=           (((      )))))))))           ',
+        //     '=                                         ',
+        //     '=                                         ',
+        //     '=     }                          )        ',
+        //     '=                              ))  ))     ',
+        //     '))))))))))))                 ))))))))     ',
+        // ],
         [
-            '               ====               ',
-            '                                  ',
-            '          ===                     ',
-            '                                  ',
-            '     =*===?                       ',
-            '                 ?==              ',
-            '                           `      ',
-            '                                  ',
-            '    @        %                     ',
-            '======================  ==========',
-        ],
-        ['   ??                             ',
-            '                *     @           ',
-            '                                  ',
-            '(((((((((((((((                   ',
-            '                    (             ',
-            '=           @                     ',
-            '=                                 ',
-            '=           (((     `             ',
-            '=                                 ',
-            '=                           (((((',
-            '=     @                           ',
-            '=                                 ',
-            '========              =========   ',
-        ],
-        ['   ??                                ',
-            '                *     @           ',
-            '                           `      ',
-            '  ?**             ^               ',
-            '                                  ',
-            '=  ^         @                    ',
-            '=                         ^       ',
-            '=           (((      )))))))))    ',
-            '=                                 ',
-            '=                           ((((( ',
-            '=     @                           ',
-            '=                                 ',
-            '))))))))))))          ))))))))))))',
+            '                                          ',
+            '                                          ',
+            '                                          ',
+            '                                          ',
+            '                                          ',
+            '                                          ',
+            '                                          ',
+            '                *     }         ¡¡¡¡      ',
+            '                                          ',
+            '                ^                         ',
+            '                                          ',
+            '     ^ ¡¡¡¡¡¡          }                  ',
+            '¡¡¡                         ^             ',
+            '¡¡¡           ¡**¡                        ',
+            '¡¡                              `         ',
+            '¡                                         ',
+            '¡    }         §                           ',
+            '           ¡¡¡¡¡¡¡¡ ¶                      ',
+            '                 ¡¡¡¡                     ',
+            '                      ¡¡¡                 ',
+            '                          ¡¡¡¡¡¡¡¡        ',
+            '                                  ¡¡¡¡¡¡¡¡',
+            '                                       ¡¡¡',
+            '¡                    ™                    ',
+            '¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡                  ',
         ],
 
+
     ]
+
 
     const levelCfg = {
         width: 20,
@@ -95,14 +173,21 @@ scene("game", ({ level, score }) => {
         '*': [sprite('surprise'), solid(), 'candy-surprise'],
         '}': [sprite('eye-pryamid'), solid()],
         '@': [sprite('globin'), solid(), 'danger', body()],
-        '}': [sprite('horse'), solid(), 'horse', body()],
+        '}': [sprite('horse'), solid(), 'danger', body()],
         '`': [sprite('house'), solid(), 'house', scale(3)],
         '#': [sprite('key'), solid(), body()],
         '(': [sprite('pink-brick'), solid()],
         '%': [sprite('cupcake'), solid(), 'cupcake', scale(0.5), body()],
         ')': [sprite('purple-block'), solid()],
-        '&': [sprite('rose'), solid()],
-        '^': [sprite('monster'), solid(), 'danger', body()]
+        '&': [sprite('rose'), solid(), 'death'],
+        '^': [sprite('monster'), solid(), 'danger', body()],
+        '™': [sprite('bunny'), solid(), 'danger', body()],
+        '¡': [sprite('empty-square'), solid()],
+        '£': [sprite('gold-block'), solid()],
+        '¢': [sprite('peach-block'), solid()],
+        '∞': [sprite('multi'), solid()],
+        '§': [sprite('burger'), 'heal'],
+        '¶': [sprite('redbull'), 'heal']
     }
 
     const gameLevel = addLevel(maps[level], levelCfg)
@@ -115,7 +200,23 @@ scene("game", ({ level, score }) => {
             value: score,
         }
     ])
-    add([text('level ' + 'test', pos(4, 6))])
+    add([text('level ' + 'score', pos(4, 6))])
+
+    // const healthBoard = add([
+    //     text(health),
+    //     pos(30, 6),
+    //     layer('ui'),
+    //     {
+    //         value: health,
+    //     }
+    // ])
+    // add([text('level' +'health', pos(4, 6))])
+
+    add([
+        sprite("background"),
+        layer("bg"),
+        scale(2),
+    ]);
 
     function big() {
         let timer = 0;
@@ -147,12 +248,32 @@ scene("game", ({ level, score }) => {
         }
     }
 
+    function health(hp){
+        return{
+            id:'health',
+            require:[],
+            hurt(n){
+                hp -= n ?? 1;
+                this.trigger('hurt');
+                if (hp <=0 ){
+                    this.trigger('death');
+                }
+            },
+            heal(n){
+                hp+=n ?? 1;
+                this.trigger('heal');
+            }
+
+        }
+    }
+
     const player = add([
         sprite('teddy', solid()),
         pos(30, 0),
         body(),
-        big(),
-        origin('bot')
+        big(3),
+        origin('bot'),
+        health(12),
     ])
 
     // action('globin', (m) => {
@@ -203,7 +324,19 @@ scene("game", ({ level, score }) => {
         scoreBoard.value++;
         scoreBoard.text = scoreBoard.value
     })
-    
+
+    player.collides('heal', (obj) => {
+        play("magic", {
+            volume: 0.2,
+            speed: 0.8,
+            detune: 1200,
+        });
+        destroy(obj)
+        scoreBoard.value++;
+        scoreBoard.text = scoreBoard.value;
+        health++;
+    })
+
     action('danger', (d) => {
         d.move(-ENEMY_SPEED, 0)
     })
@@ -225,6 +358,12 @@ scene("game", ({ level, score }) => {
                 detune: 1200,
             });
             go('lose', { score: scoreBoard.value })
+            // if('lose'){
+            //     go('game', {
+            //         level: level -1 % maps.length,
+            //         score:scoreBoard.value
+            //     })
+            // }
         }
     })
 
@@ -285,13 +424,12 @@ scene("game", ({ level, score }) => {
 
 })
 
-
-
-
-
-
-
-
+// scene("game", () => {
+//     let score = 0;
+//     keyPress("p", () => {
+//         go("game", score);
+//     })
+// });
 scene('lose', ({ score }) => {
     add([text(score, 32), origin('center'), pos(width() / 2, height() / 2)])
 })
