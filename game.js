@@ -391,7 +391,7 @@ scene("game", ({ level, score }) => {
     });
 
     const music = play('slow')
-    music.volume(0.1);
+    music.volume(0.5);
     music.speed(0.4);
     music.unloop();
 
