@@ -2,12 +2,11 @@
 A small game created with Kaboom.js and HTML.
 ## How to play the game 
   (KEY GUIDE)
-   1- stops the background music
-   space + ^ = jumps
-   < = left 
-   v = down, goes into the house 
-   > = goes to the right 
-   > 
+   1- stops the background music ,
+   space + ^ = jumps,
+   < = left, 
+   v = down(goes down the chimney), > = goes to the right *
+
 The game is not mobile friendly, you need your keyboard in order to use the up, down, left and right button. Press '1' to stop music. The goal is to get the all the cupcakes, lollipop, burgers, and redbulls.There are five levels. Try to avoid the monsters and the goblin, they will end the game. In order to go to the next level, you need to land on top of the house and press down to enter from the chimney. I hope you enjoy the little game!
 ## Inspiration for the game
 I adopted some ideas from Mario, but instead of coins, I have lollipops, redbulls, burgers, and cupcakes. I wanted to have a little fun in having some game logic and try to use Kaboom.js
